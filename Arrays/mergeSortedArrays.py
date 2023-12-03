@@ -11,7 +11,7 @@ def mergeSortedArrays(arr1, arr2):
     pointer1 = 0
     pointer2 = 0 
 
-    #
+    # runs in O(n) time and O(n) space since we have to step though each element and store them in a new array
     while(pointer1 < len(arr1) and  pointer2 < len(arr2)):   
         if arr1[pointer1] < arr2[pointer2]:
             mergedArray.append(arr1[pointer1]) 
