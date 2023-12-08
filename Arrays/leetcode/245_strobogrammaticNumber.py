@@ -52,7 +52,7 @@ class Solution:
     ierates through the string n/2 times but essentially still O(n)
     """
     def isStrobogrammatic_v2(self, num: str) -> bool:
-        mirrorPairs = {
+        strombolicPairs = {
             "0": "0",
             "1": "1",
             "6": "9",
@@ -60,14 +60,18 @@ class Solution:
             "9": "6"
         } 
 
+        # edge case for when ther eis only one digit in num. must eiher a 1, 0 or 8
+        if len(num) == 1:
+            return num in ["0", "1", "8"]
+
         left, right = 0, len(num) - 1
         while left <= right:
             # print(f"left: {left}\nright: {right}\n")
             # digit in number is not in dictionary keys
-            if num[left] not in mirrorPairs or num[right] not in mirrorPairs:
+            if num[left] not in strombolicPairs or num[right] not in strombolicPairs:
                 return False
             # digit is in dictionary but does not match any value
-            if mirrorPairs[num[left]] != num[right]:
+            if strombolicPairs[num[left]] != num[right]:
                 return False
             left += 1
             right -= 1 
