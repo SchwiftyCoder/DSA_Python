@@ -69,13 +69,66 @@ class Solution:
 
 
     """
-    
-    """
+        Add two binary strings and return their sum as a binary string.
+
+        The method first equalizes the lengths of the two binary strings by padding them with leading zeros. 
+        It then iterates over these strings from the least significant digit (rightmost) to the most significant digit (leftmost),
+        adding corresponding digits along with any carry from the previous addition. 
+        The sum for each digit is calculated and the carry is propagated as needed. 
+        The final binary sum is constructed in reverse order and returned.
+
+        Time Complexity: O(n), where n is the length of the longer binary string.
+        Space Complexity: O(n), for storing the result.
+
+        Parameters:
+        a (str): The first binary string.
+        b (str): The second binary string.
+
+        Returns:
+        str: The sum of the two binary strings as a binary string.
+        """
+
     def addBinary_v2(self, a: str, b: str) -> str:
-        pass
+        # get the largest length
+        max_length = max(len(a), len(b))
+
+        # fill any left spaces with 0
+        a = a.zfill(max_length)
+        b = b.zfill(max_length)
+
+        print(a)
+        print(b)
+
+        # stores the sum
+        binarySum = []
+        carryOver = 0
+
+        # we can now step through any pair of elements from from strings starting at the end
+
+        for index in range(len(a)-1, -1, -1):
+            sum = int(a[index]) + int(b[index]) + carryOver
+            print(f"raw sum: {sum} | ", end="")
+            carryOver = sum // 2
+            print(f"carry: {carryOver}", end="")
+            sum = sum % 2 
+            print(f" | binary sum: {sum}")
+            binarySum.append(str(sum))
+           
+        # add the last carry if is a 1
+        if carryOver == 1:
+            binarySum.append(str(carryOver))
+
+        print(''.join(reversed(binarySum)))
+
+
 
 solution = Solution()
 # solution.addBinary("11", "1")
-solution.addBinary("1010", "1011")
+# solution.addBinary("1010", "1011")
 # solution.addBinary("0", "0")
 # solution.addBinary("1", "1")
+
+
+# solution.addBinary_v2("101111", "111")
+solution.addBinary_v2("11", "1")
+# solution.addBinary("0", "0")
