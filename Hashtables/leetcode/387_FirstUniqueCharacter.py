@@ -68,6 +68,8 @@ class Solution:
         for index, char in enumerate(s):
             if charCount[ord(char) - ord('a')] == 1:
                 return index
+            
+        return -1
 
 sol = Solution()
 print(sol.firstUniqueChar("aabb"))
