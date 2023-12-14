@@ -15,7 +15,7 @@ class HashTable:
     # creates a fized sized array that is used to store our key/value pairs
     # each array element is an array that stores the key value pair.
     # this helps to handle collision issues
-    # actual elements are stored as a tuple paur like so (key, value)
+    # actual elements are stored as a tuple pair like so (key, value)
     def __init__(self) -> None:
         self.hashtable = [[None] * self.HASH_TABLE_MAX_SIZE ]
 
