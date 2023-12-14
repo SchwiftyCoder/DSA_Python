@@ -1,4 +1,6 @@
 class Arrays:
+    
+    scale_factor = 1
 
     # creates an aray object of size 0
     def __init__(self) -> None:
@@ -18,9 +20,8 @@ class Arrays:
     # add element to array
     # None here is used as a list to signify absence of a value
     def add(self, element):
-        scale_factor = 1
         if(self.length == len(self.data)): # checks if the array is full
-            self.data += [None] * scale_factor # concatenates self.data with a list type of size scale-factor and elemenst being None
+            self.data += [None] * self.scale_factor # concatenates self.data with a list type of size scale-factor and elemenst being None
         self.data[self.length] = element
         self.length += 1
 
