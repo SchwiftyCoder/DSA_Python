@@ -20,7 +20,7 @@ class Arrays:
     def add(self, element):
         scale_factor = 1
         if(self.length == len(self.data)): # checks if the array is full
-            self.data += [None] * scale_factor # concatenates self.data with a list type of size 10 and elemenst being None
+            self.data += [None] * scale_factor # concatenates self.data with a list type of size scale-factor and elemenst being None
         self.data[self.length] = element
         self.length += 1
 

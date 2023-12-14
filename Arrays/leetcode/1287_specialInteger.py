@@ -23,7 +23,7 @@ class Solution:
 
     def findSpecialInteger(self, arr: List[int]) -> int:
         # convert arr
-
+        dict = {}
         for element in arr:
             if element not in dict:
                 dict[element] = 1
