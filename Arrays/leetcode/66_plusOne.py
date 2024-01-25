@@ -41,6 +41,9 @@ digits does not contain any leading 0's.
 
 from typing import List
 class Solution:
+
+    def __init__(self) -> None:
+        pass
         
     def plusOne(self, digits: List[int]) -> List[int]:
         numberStr = ''.join(map(str, digits))

@@ -1,7 +1,7 @@
 """
 implementing a hastable class
 underlying data structure: arrays
-handling collisins
+handling collisions
 retriving elements
 searching elements
 deleting elements
@@ -13,10 +13,18 @@ class HashTable:
     HASH_TABLE_MAX_SIZE = 50
 
     # creates a fized sized array that is used to store our key/value pairs
-    # each array element is an array that stores the key value pair.
-    # this helps to handle collision issues
+    # each hash table element is an array that stores the key value pair.
+    # the index of the array represents the key. 
+    # we use a hash function to generate this key/index.
+    # each index/key must be unique, thus a hash function generates one and only 1 key/index
+    # however, there may be times when a single key maps to sevral values causing a collision
+    # in that case, we employ various methods to manage such scenarios 
     # actual elements are stored as a tuple pair like so (key, value)
+
+    
     def __init__(self) -> None:
+        #create a hastable object with default size 10
+        # equivalent to creating a list filled with another list with the value None
         self.hashtable = [[None] * self.HASH_TABLE_MAX_SIZE ]
 
     # the hash function to determine the index where our data will be stored
