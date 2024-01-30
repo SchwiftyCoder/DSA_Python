@@ -66,7 +66,10 @@ class SinglyLinkedList(Generic[T]):
         update the tail refrence to the new last element
         """
         tail = self._tail
-        print(f"prev. tail: {tail}")
+        
+        """the sll is empty"""
+        if self._head == None:
+            return None
 
         """there is only one element in the sll"""
         if self._head.get_next() == None:
@@ -160,6 +163,7 @@ class SinglyLinkedList(Generic[T]):
     def clear(self):
         """removes all element from the list"""
         self._head, self._tail = None, None
+        self._size = 0
 
     def size(self) -> int:
         return self._size
@@ -237,3 +241,21 @@ if __name__ == "__main__":
     sll_str.removeElement("prince")
     print(f"SLL content: {sll_str}")
     print(sll_str.size())
+
+    # remove all elements form the list
+    sll_str.clear()
+
+    # verify removal
+    print(f"initial size: {sll_str.size()}") # returns 0
+    print(f"is sll empty? {sll_str.isEmpty()}") # prints True or False
+    print(f"head node: {sll_str.getHead()}")
+    print(f"tail node: {sll_str.getTail()}")
+    print(f"SLL content: {sll_str}") 
+
+    # attempt element removal
+    print(f"head node: {sll_str.removeHead()}") 
+    print(f"tail node: {sll_str.removeTail()}") 
+
+    # remove element from somewhere other than the head or tail
+    sll_str.removeElement("prince")  
+
