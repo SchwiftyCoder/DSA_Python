@@ -3,8 +3,6 @@ implementation of Stack Using SLL
 data type here is generic, obtained at runtime
 our stack needs to inherit from the base class SinglyLinkedList and 
 """
-
-from nodeClass import Node
 from typing import TypeVar, Generic, Optional
 from SLL_implementation import SinglyLinkedList
 T = TypeVar('T')

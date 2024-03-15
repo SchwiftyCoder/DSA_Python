@@ -23,8 +23,8 @@ class Node(Generic[T]):
     def get_next(self) -> Optional['Node[T]']:
         return self._next
 
-    def __str__(self) -> T:
+    def __str__(self) -> str:
         """override functoin that prints the data of a node instead of the memory address"""
-        return self._data
+        return str(self._data)
     
     
