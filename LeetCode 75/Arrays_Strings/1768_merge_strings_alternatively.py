@@ -38,26 +38,43 @@ class Solution:
 
         mergedStr = ""
         char_index = 0
-        while len(word2) > char_index < len(word1):
+        while char_index < len(word1) and char_index < len(word2):
             mergedStr += word1[char_index] + word2[char_index]
             char_index += 1
 
-        # append any remaingin characters in word1
-        if char_index < len(word1):
-            mergedStr += word1[char_index:]
-        
-        if char_index < len(word2):
-            mergedStr += word2[char_index:]
+        # append any remaingin characters
 
+        mergedStr += (
+            word1[char_index:] if len(word1) > len(word2) else word2[char_index:]
+        )
+
+        return mergedStr
+
+    def mergeAlternately_v2(self, word1: str, word2: str) -> str:
+        """
+        a ore pythonic way
+        use a zip function to return a list
+        and then merge the rest of the characters
+
+
+        """
+        mergedStr = "".join([a + b for a, b in zip(word1, word2)])
+        # add the rest of the characters in word1 if it is longer than word2 else vice versa for word2
+        mergedStr += (
+            word1[len(word2) :] if len(word1) > len(word2) else word2[len(word1) :]
+        )
         return mergedStr
 
 
 sol = Solution()
 # returns "apbqcr"
-print(sol.mergeAlternately(word1 = "abc", word2 = "pqr"))
+print(sol.mergeAlternately_v2(word1="abc", word2="pqr"))
+print(sol.mergeAlternately(word1="abc", word2="pqr"))
 
 # returns "apbqcd"
-print(sol.mergeAlternately(word1 = "abcd", word2 = "pq"))
+print(sol.mergeAlternately_v2(word1="abcd", word2="pq"))
+print(sol.mergeAlternately(word1="abcd", word2="pq"))
 
 # returns "apbqrs"
-print(sol.mergeAlternately(word1 = "ab", word2 = "pqrs"))
+print(sol.mergeAlternately_v2(word1="ab", word2="pqrs"))
+print(sol.mergeAlternately_v2(word1="ab", word2="pqrs"))
