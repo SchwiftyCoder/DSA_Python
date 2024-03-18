@@ -52,11 +52,9 @@ class Solution:
 
     def mergeAlternately_v2(self, word1: str, word2: str) -> str:
         """
-        a ore pythonic way
+        a more pythonic way
         use a zip function to return a list
         and then merge the rest of the characters
-
-
         """
         mergedStr = "".join([a + b for a, b in zip(word1, word2)])
         # add the rest of the characters in word1 if it is longer than word2 else vice versa for word2
