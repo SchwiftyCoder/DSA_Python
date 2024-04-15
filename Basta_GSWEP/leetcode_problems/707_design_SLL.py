@@ -23,30 +23,48 @@ The number of nodes in the list is in the range [0, 104].
 """
 
 
+from typing import Optional, List
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
-from typing import Optional
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        # Creates a dummy node that points to the head of the list. This simplifies edge cases, especially removals at the head.
         dummy = ListNode(next = head)
-        prev, curr = dummy, head 
+        # Set prev to this newly created dummy node. Prev will trail behind curr as we iterate.
+        prev = dummy
+        # Set curr to the head of the list, the current node being examined.
+        curr = head
+        # While there are more nodes to examine (curr is not None).
         while curr:
-            next_node = curr.next
+            # Check if the current node's value matches the target value.
             if curr.val == val:
-                prev.next = next_node
+                # If so, bypass the current node, effectively removing it by linking prev to curr's next node.
+                prev.next = curr.next
             else:
+                # If not, move prev forward since curr does not need to be removed.
                 prev = curr
-
-            curr = next_node
-
+            # In either case, advance curr to the next node in the list.
+            curr = curr.next
+        # Return the modified list, starting from the node following the dummy. This effectively skips over any removed head element(s).
         return dummy.next
 
 
-    def build_list(self, elements):
+    def build_list(self, elements: List[int]) -> Optional[ListNode]:
+        """
+        Approach:
+
+
+        Arguments:
+            elements: the list to build the SLL from
+
+        Return:
+            the head of the SLL we just built
+        """
         head = ListNode(elements[0]) if elements else None
         current = head
         for element in elements[1:]:
@@ -64,7 +82,7 @@ class Solution:
 
 if __name__ == "__main__":
     tests = [
-        ([1, 2, 6, 3, 4, 5, 6], 6),
+        ([1, 2, 6, 3, 4, 5, 6], 6), # returns [1, 2, 3, 4, 5]
         ([], 1),
         ([7, 7, 7, 7], 7),
         ([1, 2, 3, 4, 5], 3),
@@ -77,8 +95,7 @@ if __name__ == "__main__":
     for test in tests:
         input_list, val_to_remove = test
         head = sol.build_list(input_list)
-        print("Original:", input_list, "Remove:", val_to_remove)
-        solution = Solution()
-        modified_head = solution.removeElements(head, val_to_remove)
+        print("Original:", input_list, "Remove:", val_to_remove) 
+        modified_head = sol.removeElements(head, val_to_remove)
         sol.print_list(modified_head)
         print("---")
